@@ -9,25 +9,9 @@ const app = express()
 app.use(express.json())
 
 app.use(cors({
-  origin: (origin, callback) => {
-    const ACCEPTED_ORIGINS = [
-      'http://localhost:8080',
-      'http://localhost:2000',
-      'https://movies.com',
-      'https://midu.dev'
-    ]
-
-    if (ACCEPTED_ORIGINS.includes(origin)) {
-      return callback(null, true)
-    }
-
-    if (!origin) {
-      return callback(null, true)
-    }
-
-    return callback(new Error('Not allowed by CORS'))
+  origin: '*'
   }
-}))
+))
 app.disable('x-powered-by') // deshabilitar el header X-Powered-By: Express
 
 // métodos normales: GET/HEAD/POST
